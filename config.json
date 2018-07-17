@@ -1,0 +1,6 @@
+{
+    "clientId": "YOUR CLIENT ID HERE",
+    "clientSecret": "YOUR CLIENT SECRET HERE",
+    "subreddit": "ProgrammerHumor",
+    "webhook": "YOUR WEBHOOK HERE"
+}
