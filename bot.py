@@ -35,7 +35,7 @@ def post_submission(submission, webhook):
         "attachments": [
             {
                 "author_link":
-                    "https://reddit.com/u/{submission.author.name}",
+                    f"https://reddit.com/u/{submission.author.name}",
                 "author_name": f"/u/{submission.author.name}",
                 "color": "#ff5700",
                 "footer": f"/r/{submission.subreddit.display_name}",
