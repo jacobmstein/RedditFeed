@@ -1,6 +1,9 @@
 # RedditFeed
 Reddit bot to stream submissions to a Slack channel.
 
+## Example
+![Example](https://raw.githubusercontent.com/jacobmstein/RedditFeed/5eff54e7e795ca61c4cd8d9166369b926f548567/example.png)
+
 ## Installation
 1. Verify you have [Python 3.6+](https://www.python.org/downloads/) installed.
 2. Clone (`git clone https://github.com/jacobmstein/RedditFeed.git`) or [download](https://github.com/jacobmstein/RedditFeed/archive/master.zip) this repository.
