@@ -1,8 +1,10 @@
 import json
 import time
+import sys
 
 import praw
 import requests
+from prawcore.exceptions import ResponseException
 
 
 def get_config():
@@ -22,11 +24,23 @@ def get_reddit(client_id, client_secret):
 def stream_submissions(subreddit, webhook):
     """Streams new submissions on the provided subreddit to Slack."""
     start_time = time.time()
-    for submission in subreddit.stream.submissions():
-        if submission.created_utc < start_time:
-            continue
+    try:
+        for submission in subreddit.stream.submissions():
+            if submission.created_utc < start_time:
+                continue
 
-        post_submission(submission, webhook)
+            post_submission(submission, webhook)
+    except ResponseException as e:
+        code = e.response.status_code
+        if 400 <= code < 500:
+            print(f"Error, {code} received. Check your credentials then"
+                  " try again.")
+            sys.exit()
+
+        print(f"Error, {code} received. Retrying in"
+              " 5 seconds.")
+        time.sleep(5)
+        stream_submissions(subreddit, webhook)
 
 
 def post_submission(submission, webhook):
