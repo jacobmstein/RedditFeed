@@ -37,8 +37,7 @@ def stream_submissions(subreddit, webhook):
                   " try again.")
             sys.exit()
 
-        print(f"Error, {code} received. Retrying in"
-              " 5 seconds.")
+        print(f"Error, {code} received. Retrying in 5 seconds.")
         time.sleep(5)
         stream_submissions(subreddit, webhook)
 
